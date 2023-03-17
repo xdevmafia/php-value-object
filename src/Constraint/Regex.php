@@ -26,6 +26,10 @@ class Regex implements Constraint
 
     public function __invoke($value): bool
     {
+        if ($value === null) {
+            return true;
+        }
+
         return preg_match($this->regex, $value) > 0;
     }
 }
