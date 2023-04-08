@@ -27,6 +27,10 @@ class DateFormat implements Constraint
 
     public function __invoke($value): bool
     {
+        if ($value === null) {
+            return true;
+        }
+
         return DateTime::createFromFormat($this->format, $value) !== false;
     }
 }
